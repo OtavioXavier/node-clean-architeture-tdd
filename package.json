@@ -8,7 +8,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --silent --noStackTrace --passWithNoTests",
-    "test:unit": "npm test -- --watch",
+    "test:unit": "npm test -- --watch -c jest-unit.config.cjs",
+    "test:integration": "npm test -- --watch -c jest-integration.config.cjs",
     "test:staged": "npm test -- --findRelatedTests",
     "test:ci": "npm test -- --coverage",
     "prepare": "husky"
