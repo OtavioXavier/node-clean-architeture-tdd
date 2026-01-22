@@ -1,7 +1,7 @@
 {
   "name": "clean-node-api",
   "version": "1.0.0",
-  "description": "apply clean architeture in nodejs",
+  "description": "Projeto de aprendizado em Clean Architecture aplicada a Node.js usando Test-Driven Development (TDD)",
   "license": "ISC",
   "author": "",
   "type": "module",
