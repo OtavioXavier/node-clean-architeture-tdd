@@ -4,7 +4,7 @@
   "description": "apply clean architeture in nodejs",
   "license": "ISC",
   "author": "",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "jest"
@@ -19,6 +19,9 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "standard": {
+    "env": ["jest"]
   },
   "devDependencies": {
     "husky": "^9.1.7",
