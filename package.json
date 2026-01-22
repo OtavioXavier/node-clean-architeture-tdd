@@ -7,11 +7,14 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest --watchAll",
+    "test:staged": "jest",
+    "prepare": "husky"
   },
   "lint-staged": {
     "*.js": [
-      "stardard --fix",
+      "standard --fix",
+      "npm run test:staged",
       "git add"
     ]
   },
@@ -21,7 +24,9 @@
     }
   },
   "standard": {
-    "env": ["jest"]
+    "env": [
+      "jest"
+    ]
   },
   "devDependencies": {
     "husky": "^9.1.7",
