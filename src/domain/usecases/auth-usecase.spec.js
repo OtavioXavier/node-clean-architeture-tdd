@@ -81,24 +81,6 @@ describe('AuthUseCase', () => {
     await expect(loadUserByEmailRepositorySpy.email).toBe('any@email.com')
   })
 
-  test('Should throw if no object is provided', async () => {
-    const sut = new AuthUseCase()
-    const promise = sut.auth('any@email.com', 'any_password')
-    expect(promise).rejects.toThrow()
-  })
-
-  test('Should throw if no loadUserByEmailRepository is provided', async () => {
-    const sut = new AuthUseCase({})
-    const promise = sut.auth('any@email.com', 'any_password')
-    expect(promise).rejects.toThrow()
-  })
-
-  test('Should throw if loadUserByEmailRepository has no method', async () => {
-    const sut = new AuthUseCase({ loadUserByEmailRepository: {} })
-    const promise = sut.auth('any@email.com', 'any_password')
-    expect(promise).rejects.toThrow()
-  })
-
   test('Should return null if an invalid email is provided', async () => {
     const { sut, loadUserByEmailRepositorySpy } = makeSUT()
     loadUserByEmailRepositorySpy.user = null
@@ -131,5 +113,38 @@ describe('AuthUseCase', () => {
     const accessToken = await sut.auth('valid@email.com', 'valid_password')
     expect(accessToken).toBe(tokenGeneratorSpy.accessToken)
     expect(accessToken).toBeTruthy()
+  })
+
+  test('Should throw if invalid dependencies are provided', async () => {
+    const invalid = {}
+    const loadUserByEmailRepository = makeLoadUserByEmailRepository()
+    const encrypter = makeEncrypter()
+    const suts = [].concat(
+      new AuthUseCase(),
+      new AuthUseCase({}),
+      new AuthUseCase({
+        loadUserByEmailRepository: invalid
+      }),
+      new AuthUseCase({
+        loadUserByEmailRepository
+      }),
+      new AuthUseCase({
+        loadUserByEmailRepository,
+        encrypter: invalid
+      }),
+      new AuthUseCase({
+        loadUserByEmailRepository,
+        encrypter
+      }),
+      new AuthUseCase({
+        loadUserByEmailRepository,
+        encrypter,
+        tokenGenerator: invalid
+      })
+    )
+    for (const sut of suts) {
+      const promise = sut.auth('any@email.com', 'any_password')
+      expect(promise).rejects.toThrow()
+    }
   })
 })
