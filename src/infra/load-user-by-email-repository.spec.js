@@ -40,4 +40,10 @@ describe('Load user by email', () => {
     const user = await sut.load('invalid_email@mail.com')
     expect(user.id).toEqual(fakeUser.isertedId)
   })
+
+  test('should throw if not userModel is provided', async () => {
+    const sut = new LoadUserByEmailRepository()
+    const promise = sut.load('any@mail.com')
+    expect(promise).rejects.toThrow()
+  })
 })
