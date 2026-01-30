@@ -1,13 +1,12 @@
 const MongoHelper = require('../helpers/mongo-helper')
 let db
-
 class UpdateAccessTokenRepository {
   constructor (userModel) {
     this.userModel = userModel
   }
 
-  update (userId, accessToken) {
-    this.userModel.updateOne({
+  async update (userId, accessToken) {
+    await this.userModel.updateOne({
       id: userId
     }, {
       $set: {
@@ -35,7 +34,7 @@ describe('Update access token repository', () => {
     const userModel = db.collection('users')
     const sut = new UpdateAccessTokenRepository(userModel)
     const fakeUser = await userModel.insertOne({ email: 'valid_email@email.com', password: 'valid_password' })
-    sut.update(fakeUser.id, 'valid_token')
+    await sut.update(fakeUser.id, 'valid_token')
     const fakeUpdatedUser = await userModel.findOne({ id: fakeUser.id })
     expect(fakeUpdatedUser.accessToken).toBe('valid_token')
   })
