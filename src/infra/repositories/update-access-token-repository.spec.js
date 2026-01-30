@@ -31,7 +31,7 @@ describe('Update access token repository', () => {
     await MongoHelper.disconnect()
   })
 
-  test('should the user with the given access token', async () => {
+  test('should update the user with the given access token', async () => {
     const userModel = db.collection('users')
     const sut = new UpdateAccessTokenRepository(userModel)
     const fakeUser = await userModel.insertOne({ email: 'valid_email@email.com', password: 'valid_password' })
