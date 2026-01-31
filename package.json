@@ -8,7 +8,7 @@
   "main": "src/main/index.js",
   "scripts": {
     "start": "node src/main/index.js",
-    "test": "jest --silent --noStackTrace --passWithNoTests",
+    "test": "jest --silent --noStackTrace --passWithNoTests --runInBand",
     "test:unit": "npm test -- --watch -c jest-unit.config.cjs",
     "test:integration": "npm test -- --watch -c jest-integration.config.cjs",
     "test:staged": "npm test -- --findRelatedTests",
