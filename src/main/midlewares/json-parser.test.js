@@ -1,5 +1,5 @@
-import request from 'supertest'
-import app from '../config/app'
+const app = require('../config/app')
+const request = require('supertest')
 
 describe('JSON parser middleware', () => {
   test('Should parse body as json', async () => {

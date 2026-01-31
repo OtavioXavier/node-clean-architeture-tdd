@@ -1,5 +1,5 @@
-import request from 'supertest'
-import app from './app'
+const app = require('./app')
+const request = require('supertest')
 
 describe('App setup', () => {
   test('Should disable x-powered-by header', async () => {

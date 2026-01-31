@@ -1,5 +1,4 @@
-import request from 'supertest'
-
+const request = require('supertest')
 describe('Content-Type middleware', () => {
   let app
   beforeEach(() => {

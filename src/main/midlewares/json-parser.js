@@ -1,3 +1,3 @@
 const express = require('express')
 
-export const jsonParser = express.json()
+module.exports = express.json()

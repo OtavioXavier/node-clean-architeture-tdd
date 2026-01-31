@@ -1,4 +1,4 @@
-const config = {
+module.exports = {
   collectCoverage: true,
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
@@ -6,5 +6,3 @@ const config = {
   watchPathIgnorePatterns: ['globalConfig', 'node_modules'],
   preset: '@shelf/jest-mongodb'
 }
-
-export default config

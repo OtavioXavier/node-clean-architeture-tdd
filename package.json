@@ -4,13 +4,13 @@
   "description": "Projeto de aprendizado em Clean Architecture aplicada a Node.js usando Test-Driven Development (TDD)",
   "license": "ISC",
   "author": "Otavio Marinho",
-  "type": "module",
+  "type": "commonjs",
   "main": "src/main/index.js",
   "scripts": {
     "start": "node src/main/index.js",
     "test": "jest --silent --noStackTrace --passWithNoTests --runInBand",
-    "test:unit": "npm test -- --watch -c jest-unit.config.cjs",
-    "test:integration": "npm test -- --watch -c jest-integration.config.cjs",
+    "test:unit": "npm test -- --watch -c jest-unit.config.js",
+    "test:integration": "npm test -- --watch -c jest-integration.config.js",
     "test:staged": "npm test -- --findRelatedTests",
     "test:ci": "npm test -- --coverage",
     "prepare": "husky"

@@ -1,5 +1,5 @@
-import express from 'express'
-import appSetup from './setup'
+const express = require('express')
+const appSetup = require('./setup')
 
 const app = express()
 appSetup(app)
